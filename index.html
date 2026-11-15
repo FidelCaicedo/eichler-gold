@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eichler Gold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Josefin+Sans:wght@600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/eichler-gold.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Cabecera asimétrica: texto a la izquierda, starburst a la derecha */
+  header.hero { position: relative; overflow: hidden; padding: 72px 0 56px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); margin: 0.2em 0 0; color: var(--eg-gold); }
+  .hero p.lead { font-size: 1.2rem; max-width: 34ch; color: var(--eg-text); }
+  .burst { width: min(360px, 80%); aspect-ratio: 1; justify-self: center;
+           background: var(--eg-gold); -webkit-mask: url(motifs/starburst.svg) center/contain no-repeat;
+           mask: url(motifs/starburst.svg) center/contain no-repeat; }
+  .m { display: inline-block; -webkit-mask: var(--src) center/contain no-repeat; mask: var(--src) center/contain no-repeat; }
+  .band { height: 72px; background: var(--eg-surface-raised); border-top: 2px solid var(--eg-gold); }
+
+  .theme-toggle { position: absolute; top: 20px; right: 24px; }
+
+  section { padding: 56px 0 8px; }
+  section > h2 { font-size: 1.9rem; margin: 0.15em 0 0; }
+
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+  .sw { border-radius: var(--eg-radius-md); overflow: hidden; border: 1px solid color-mix(in srgb, var(--eg-gold-muted) 40%, transparent); background: var(--eg-surface); }
+  .sw .chip { height: 84px; }
+  .sw .meta { padding: 10px 12px; font-size: 0.875rem; }
+  .sw .meta b { display: block; font-weight: 500; }
+  .sw .meta code { color: var(--eg-text-muted); font-size: 0.8rem; }
+
+  .type-row { display: grid; grid-template-columns: 160px 1fr; gap: 20px; padding: 18px 0;
+              border-bottom: 1px solid color-mix(in srgb, var(--eg-gold-muted) 25%, transparent); align-items: baseline; }
+  .type-row .eg-eyebrow { font-size: 0.72rem; }
+
+  .components { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: start; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 14px 0; }
+  .hotkeys { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; align-items: center; margin-top: 14px; }
+
+  .motifs { display: flex; flex-wrap: wrap; gap: 36px; align-items: center; }
+  .motifs figure { margin: 0; text-align: center; }
+  .motifs figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--eg-text-muted); font-family: var(--eg-font-mono); }
+
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .dos ul { margin: 0.6em 0 0; padding-left: 1.1em; }
+  .dos li { margin: 0.35em 0; }
+
+  footer { padding: 56px 0 40px; color: var(--eg-text-muted); font-size: 0.9rem; }
+
+  @media (max-width: 760px) {
+    .hero-grid, .components, .dos { grid-template-columns: 1fr; }
+    .burst { width: 220px; }
+    .type-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body class="eg eg-grain">
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eg-eyebrow">Sistema de diseño</span>
+      <h1>Eichler Gold</h1>
+      <hr class="eg-rule">
+      <p class="lead">Nogal, teca y dorado. Geometría de la era atómica y tipografía geométrica, para productos que se sienten hechos a mano.</p>
+      <div class="row">
+        <a class="eg-btn eg-btn--primary" href="tokens/eichler-gold.tokens.json">Tokens</a>
+        <a class="eg-btn eg-btn--secondary" href="docs/principios.md">Principios</a>
+      </div>
+    </div>
+    <div class="burst" role="img" aria-label="Starburst atómico"></div>
+  </div>
+  <button class="eg-btn eg-btn--secondary theme-toggle" id="toggle" type="button">Modo papel</button>
+</header>
+<div class="band"></div>
+
+<main class="wrap">
+
+  <section>
+    <span class="eg-eyebrow">Paleta</span>
+    <h2>Madera y metal</h2>
+    <hr class="eg-rule">
+    <div class="swatches" id="swatches"></div>
+  </section>
+
+  <section>
+    <span class="eg-eyebrow">Tipografía</span>
+    <h2>Tres voces</h2>
+    <hr class="eg-rule">
+    <div class="type-row"><span class="eg-eyebrow">Display · Josefin Sans</span>
+      <h3 style="font-size:2.4rem;margin:0">Elige tu sistema</h3></div>
+    <div class="type-row"><span class="eg-eyebrow">Texto · Jost</span>
+      <p style="margin:0;max-width:60ch">Las casas Eichler abrieron la vivienda a la luz: vigas a la vista, ventanales de piso a techo y un patio al centro. La interfaz hace lo mismo: estructura clara, materiales cálidos y nada de adorno gratuito.</p></div>
+    <div class="type-row"><span class="eg-eyebrow">Mono · Space Mono</span>
+      <code>func main() { fmt.Println("eichler gold") }</code></div>
+  </section>
+
+  <section>
+    <span class="eg-eyebrow">Componentes</span>
+    <h2>Piezas</h2>
+    <hr class="eg-rule">
+    <div class="components">
+      <div>
+        <div class="row">
+          <button class="eg-btn eg-btn--primary" type="button">Arrancar</button>
+          <button class="eg-btn eg-btn--secondary" type="button">Editar</button>
+          <button class="eg-btn eg-btn--danger" type="button">Eliminar</button>
+        </div>
+        <div class="row">
+          <input class="eg-input" placeholder="Buscar en el historial" aria-label="Buscar">
+        </div>
+        <p>Selecciona este texto para ver la selección dorada. Un <a href="#">enlace</a> se ve así.</p>
+      </div>
+      <div class="eg-panel">
+        <span class="eg-eyebrow">Terminal</span>
+        <div class="hotkeys">
+          <span><kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>T</kbd></span><span>Nueva pestaña</span>
+          <span><kbd>Ctrl</kbd> <kbd>R</kbd></span><span>Buscar en el historial</span>
+          <span><kbd>Super</kbd></span><span>Menú</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eg-eyebrow">Motivos</span>
+    <h2>Era atómica</h2>
+    <hr class="eg-rule">
+    <div class="motifs">
+      <figure><span class="m" style="--src:url(motifs/starburst.svg);width:120px;height:120px;background:var(--eg-gold)"></span><figcaption>starburst.svg</figcaption></figure>
+      <figure><span class="m" style="--src:url(motifs/mini-burst.svg);width:64px;height:64px;background:var(--eg-gold-muted)"></span><figcaption>mini-burst.svg</figcaption></figure>
+      <figure><span class="m" style="--src:url(motifs/sparkle.svg);width:48px;height:48px;background:var(--eg-cream)"></span><figcaption>sparkle.svg</figcaption></figure>
+      <figure><span class="m" style="--src:url(motifs/boomerang.svg);width:110px;height:110px;background:var(--eg-teal)"></span><figcaption>boomerang.svg</figcaption></figure>
+      <figure><span class="m" style="--src:url(motifs/boomerang.svg);width:90px;height:90px;background:var(--eg-burnt-orange);transform:scaleX(-1) rotate(20deg)"></span><figcaption>color libre</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <span class="eg-eyebrow">Criterio</span>
+    <h2>Sí y no</h2>
+    <hr class="eg-rule">
+    <div class="dos">
+      <div class="eg-panel"><h3 style="margin:0">Sí</h3>
+        <ul><li>Fondo marrón nogal, nunca negro</li><li>Un solo acento dorado por pantalla</li><li>Texto nogal sobre dorado</li><li>Composición asimétrica y mucho aire</li><li>Formas planas y grano sutil</li></ul></div>
+      <div class="eg-panel"><h3 style="margin:0">No</h3>
+        <ul><li>Degradados morados y blobs</li><li>Vidrio esmerilado</li><li>Inter o Roboto como identidad</li><li>Emojis como íconos</li><li>Blanco y negro puros</li></ul></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">Eichler Gold · nogal <code>#1E1A16</code> · dorado <code>#D4AF37</code> · crema <code>#EDE3CF</code></footer>
+
+<script>
+  const colors = [
+    ["Nogal", "#1E1A16", "fondo"], ["Teca", "#3A2A1E", "superficie"], ["Dorado", "#D4AF37", "acento"],
+    ["Dorado claro", "#E6C35C", "hover, títulos"], ["Dorado apagado", "#A8892C", "bordes"], ["Crema", "#EDE3CF", "texto"],
+    ["Papel", "#F4ECDC", "fondo claro"], ["Mostaza", "#D9A441", "ilustración"], ["Naranja quemado", "#C8642D", "avisos"],
+    ["Teal", "#2E7D7A", "ilustración"], ["Oliva", "#7A8B4B", "éxito"], ["Bronce", "#7D661B", "dorado sobre papel"]
+  ];
+  document.getElementById("swatches").innerHTML = colors.map(([n, h, r]) =>
+    `<div class="sw"><div class="chip" style="background:${h}"></div><div class="meta"><b>${n}</b><code>${h}</code> · ${r}</div></div>`).join("");
+
+  const btn = document.getElementById("toggle");
+  const setTheme = t => {
+    document.documentElement.toggleAttribute("data-theme", t === "light");
+    if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+    btn.textContent = t === "light" ? "Modo nogal" : "Modo papel";
+    try { localStorage.setItem("eg-theme", t); } catch (e) {}
+  };
+  let saved = "dark";
+  try { saved = localStorage.getItem("eg-theme") || "dark"; } catch (e) {}
+  setTheme(saved);
+  btn.addEventListener("click", () => setTheme(document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light"));
+</script>
+</body>
+</html>

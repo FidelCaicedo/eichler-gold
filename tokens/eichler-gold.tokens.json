@@ -1,0 +1,117 @@
+{
+  "$description": "Eichler Gold: sistema de diseño Mid-Century Modern de Kaiser. Formato W3C Design Tokens (DTCG).",
+  "color": {
+    "$type": "color",
+    "base": {
+      "walnut":      { "$value": "#1E1A16", "$description": "Nogal. Fondo del modo oscuro; texto del modo claro." },
+      "teak":        { "$value": "#3A2A1E", "$description": "Teca. Superficies, hover, teclas." },
+      "gold":        { "$value": "#D4AF37", "$description": "Dorado. Acento principal, selección, botón primario." },
+      "gold-light":  { "$value": "#E6C35C", "$description": "Dorado claro. Hover del acento, títulos sobre nogal." },
+      "gold-muted":  { "$value": "#A8892C", "$description": "Dorado apagado. Bordes finos, texto secundario sobre nogal." },
+      "mustard":     { "$value": "#D9A441", "$description": "Mostaza. Ilustración." },
+      "burnt-orange":{ "$value": "#C8642D", "$description": "Naranja quemado. Ilustración, avisos, destructivo." },
+      "teal":        { "$value": "#2E7D7A", "$description": "Teal. Ilustración, enlaces secundarios." },
+      "olive":       { "$value": "#7A8B4B", "$description": "Oliva. Ilustración, éxito." },
+      "cream":       { "$value": "#EDE3CF", "$description": "Crema. Texto del modo oscuro." },
+      "paper":       { "$value": "#F4ECDC", "$description": "Papel. Fondo del modo claro." }
+    },
+    "ink": {
+      "$description": "Versiones oscurecidas para TEXTO sobre papel (pasan WCAG AA, >= 4.6:1).",
+      "bronze":      { "$value": "#7D661B", "$description": "Dorado para texto sobre papel." },
+      "rust":        { "$value": "#A55225", "$description": "Naranja para texto sobre papel." },
+      "deep-teal":   { "$value": "#2B7471", "$description": "Teal para texto sobre papel." },
+      "moss":        { "$value": "#616F3C", "$description": "Oliva para texto sobre papel." }
+    }
+  },
+  "theme": {
+    "$type": "color",
+    "dark": {
+      "bg":            { "$value": "{color.base.walnut}" },
+      "surface":       { "$value": "#2A211A", "$description": "Entre nogal y teca: tarjetas, barras." },
+      "surface-raised":{ "$value": "{color.base.teak}" },
+      "text":          { "$value": "{color.base.cream}" },
+      "text-muted":    { "$value": "#A89C88" },
+      "accent":        { "$value": "{color.base.gold}" },
+      "accent-hover":  { "$value": "{color.base.gold-light}" },
+      "on-accent":     { "$value": "{color.base.walnut}", "$description": "Texto sobre dorado: siempre nogal, nunca crema (1.65:1)." },
+      "heading":       { "$value": "{color.base.gold-light}" },
+      "border":        { "$value": "{color.base.gold-muted}" },
+      "danger":        { "$value": "{color.base.burnt-orange}" },
+      "success":       { "$value": "{color.base.olive}" }
+    },
+    "light": {
+      "bg":            { "$value": "{color.base.paper}" },
+      "surface":       { "$value": "#EAE0CB" },
+      "surface-raised":{ "$value": "{color.base.cream}" },
+      "text":          { "$value": "{color.base.walnut}" },
+      "text-muted":    { "$value": "#5A4E42" },
+      "accent":        { "$value": "{color.base.gold}", "$description": "Como relleno (botones); para texto usar ink.bronze." },
+      "accent-hover":  { "$value": "{color.base.gold-light}" },
+      "on-accent":     { "$value": "{color.base.walnut}" },
+      "heading":       { "$value": "{color.base.walnut}" },
+      "link":          { "$value": "{color.ink.bronze}" },
+      "border":        { "$value": "{color.base.gold-muted}" },
+      "danger":        { "$value": "{color.ink.rust}" },
+      "success":       { "$value": "{color.ink.moss}" }
+    }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "display": { "$value": ["Josefin Sans", "Futura", "sans-serif"], "$description": "Títulos. Bold o SemiBold; en versalitas con tracking amplio para etiquetas." },
+      "body":    { "$value": ["Jost", "Futura", "sans-serif"], "$description": "Texto. Geométrica inspirada en Futura." },
+      "mono":    { "$value": ["Space Mono", "monospace"], "$description": "Código, teclas, datos." }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium":  { "$value": 500 },
+      "semibold":{ "$value": 600 },
+      "bold":    { "$value": 700 }
+    },
+    "size": {
+      "$type": "dimension",
+      "xs":  { "$value": "0.8125rem" },
+      "sm":  { "$value": "0.9375rem" },
+      "md":  { "$value": "1.0625rem" },
+      "lg":  { "$value": "1.375rem" },
+      "xl":  { "$value": "1.875rem" },
+      "2xl": { "$value": "2.625rem" },
+      "3xl": { "$value": "3.75rem" }
+    },
+    "tracking": {
+      "$type": "dimension",
+      "eyebrow": { "$value": "0.32em", "$description": "Etiquetas en versalitas: S I S T E M A" }
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "key":   { "$value": "5px",  "$description": "Teclas (kbd)." },
+    "sm":    { "$value": "6px" },
+    "md":    { "$value": "8px",  "$description": "Botones, campos, menús." },
+    "panel": { "$value": "18px", "$description": "Paneles grandes (como el del GRUB)." },
+    "pill":  { "$value": "999px" }
+  },
+  "border": {
+    "$type": "dimension",
+    "hairline": { "$value": "1px" },
+    "panel":    { "$value": "2px", "$description": "Borde dorado apagado de los paneles." },
+    "rule":     { "$value": "2px", "$description": "Filete dorado bajo títulos y en la franja teca." }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "panel": { "$value": { "offsetX": "0px", "offsetY": "4px", "blur": "16px", "spread": "0px", "color": "#00000099" } },
+    "key":   { "$value": { "offsetX": "0px", "offsetY": "2px", "blur": "0px", "spread": "0px", "color": "#140F0C" } }
+  },
+  "space": {
+    "$type": "dimension",
+    "1": { "$value": "4px" },
+    "2": { "$value": "8px" },
+    "3": { "$value": "12px" },
+    "4": { "$value": "16px" },
+    "6": { "$value": "24px" },
+    "8": { "$value": "32px" },
+    "12": { "$value": "48px" },
+    "16": { "$value": "64px" }
+  }
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-linecap="round">
+  <ellipse cx="100" cy="100" rx="92" ry="34" transform="rotate(60 100 100)" stroke-width="1.5" opacity=".55"/>
+  <ellipse cx="100" cy="100" rx="92" ry="34" transform="rotate(-60 100 100)" stroke-width="1.5" opacity=".55"/>
+  <line x1="100" y1="100" x2="178" y2="100" stroke-width="2.4"/>
+  <circle cx="178" cy="100" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="150.23" y2="113.46" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="167.55" y2="139" stroke-width="2.4"/>
+  <circle cx="167.55" cy="139" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="136.77" y2="136.77" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="139" y2="167.55" stroke-width="2.4"/>
+  <circle cx="139" cy="167.55" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="113.46" y2="150.23" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="100" y2="178" stroke-width="2.4"/>
+  <circle cx="100" cy="178" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="86.54" y2="150.23" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="61" y2="167.55" stroke-width="2.4"/>
+  <circle cx="61" cy="167.55" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="63.23" y2="136.77" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="32.45" y2="139" stroke-width="2.4"/>
+  <circle cx="32.45" cy="139" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="49.77" y2="113.46" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="22" y2="100" stroke-width="2.4"/>
+  <circle cx="22" cy="100" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="49.77" y2="86.54" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="32.45" y2="61" stroke-width="2.4"/>
+  <circle cx="32.45" cy="61" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="63.23" y2="63.23" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="61" y2="32.45" stroke-width="2.4"/>
+  <circle cx="61" cy="32.45" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="86.54" y2="49.77" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="100" y2="22" stroke-width="2.4"/>
+  <circle cx="100" cy="22" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="113.46" y2="49.77" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="139" y2="32.45" stroke-width="2.4"/>
+  <circle cx="139" cy="32.45" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="136.77" y2="63.23" stroke-width="2.4"/>
+  <line x1="100" y1="100" x2="167.55" y2="61" stroke-width="2.4"/>
+  <circle cx="167.55" cy="61" r="4.5" fill="currentColor" stroke="none"/>
+  <line x1="100" y1="100" x2="150.23" y2="86.54" stroke-width="2.4"/>
+  <circle cx="100" cy="100" r="10" fill="currentColor" stroke="none"/>
+</svg>

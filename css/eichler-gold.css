@@ -1,0 +1,176 @@
+/* ==========================================================
+   Eichler Gold · CSS base
+   Valores tomados de tokens/eichler-gold.tokens.json (fuente de verdad).
+   Fuentes: cargar en el <head>:
+   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Josefin+Sans:wght@600;700&family=Space+Mono&display=swap" rel="stylesheet">
+   Modo oscuro (nogal) por defecto; modo claro (papel) con data-theme="light".
+   ========================================================== */
+
+:root {
+  /* base */
+  --eg-walnut: #1E1A16;
+  --eg-teak: #3A2A1E;
+  --eg-gold: #D4AF37;
+  --eg-gold-light: #E6C35C;
+  --eg-gold-muted: #A8892C;
+  --eg-mustard: #D9A441;
+  --eg-burnt-orange: #C8642D;
+  --eg-teal: #2E7D7A;
+  --eg-olive: #7A8B4B;
+  --eg-cream: #EDE3CF;
+  --eg-paper: #F4ECDC;
+  /* tinta para texto sobre papel (AA) */
+  --eg-bronze: #7D661B;
+  --eg-rust: #A55225;
+  --eg-deep-teal: #2B7471;
+  --eg-moss: #616F3C;
+
+  /* tipografía */
+  --eg-font-display: "Josefin Sans", Futura, sans-serif;
+  --eg-font-body: "Jost", Futura, sans-serif;
+  --eg-font-mono: "Space Mono", monospace;
+  --eg-tracking-eyebrow: 0.32em;
+
+  /* forma */
+  --eg-radius-key: 5px;
+  --eg-radius-sm: 6px;
+  --eg-radius-md: 8px;
+  --eg-radius-panel: 18px;
+  --eg-shadow-panel: 0 4px 16px rgba(0, 0, 0, 0.6);
+
+  /* tema oscuro (nogal) */
+  --eg-bg: var(--eg-walnut);
+  --eg-surface: #2A211A;
+  --eg-surface-raised: var(--eg-teak);
+  --eg-text: var(--eg-cream);
+  --eg-text-muted: #A89C88;
+  --eg-heading: var(--eg-gold-light);
+  --eg-accent: var(--eg-gold);
+  --eg-accent-hover: var(--eg-gold-light);
+  --eg-on-accent: var(--eg-walnut);
+  --eg-link: var(--eg-gold);
+  --eg-border: var(--eg-gold-muted);
+  --eg-danger: var(--eg-burnt-orange);
+  --eg-success: var(--eg-olive);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --eg-bg: var(--eg-paper);
+  --eg-surface: #EAE0CB;
+  --eg-surface-raised: var(--eg-cream);
+  --eg-text: var(--eg-walnut);
+  --eg-text-muted: #5A4E42;
+  --eg-heading: var(--eg-walnut);
+  --eg-link: var(--eg-bronze);
+  --eg-danger: var(--eg-rust);
+  --eg-success: var(--eg-moss);
+  --eg-shadow-panel: 0 4px 16px rgba(58, 42, 30, 0.18);
+  color-scheme: light;
+}
+
+/* ---------- base ----------
+   :where() deja la especificidad en 0: los componentes (.eg-btn...)
+   y tus estilos siempre ganan sobre estas reglas generales. */
+:where(.eg) {
+  background: var(--eg-bg);
+  color: var(--eg-text);
+  font-family: var(--eg-font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+:where(.eg) :where(h1, h2, h3) {
+  font-family: var(--eg-font-display);
+  font-weight: 700;
+  color: var(--eg-heading);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+:where(.eg) a { color: var(--eg-link); text-underline-offset: 0.2em; }
+:where(.eg) a:hover { color: var(--eg-accent-hover); }
+:where(.eg) ::selection { background: var(--eg-gold); color: var(--eg-walnut); }
+:where(.eg) :focus-visible { outline: 2px solid var(--eg-gold); outline-offset: 2px; }
+:where(.eg) :where(code, pre) { font-family: var(--eg-font-mono); }
+
+/* ---------- piezas de la identidad ---------- */
+
+/* Etiqueta en versalitas: S I S T E M A */
+.eg-eyebrow {
+  font-family: var(--eg-font-display);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: var(--eg-tracking-eyebrow);
+  color: var(--eg-gold-muted);
+}
+
+/* Filete dorado corto bajo un título */
+.eg-rule {
+  display: block;
+  width: 110px;
+  height: 2px;
+  margin: 0.4em 0 1.2em;
+  background: var(--eg-gold-muted);
+  border: 0;
+}
+
+/* Panel: nogal, borde dorado apagado, esquinas de 18px (GRUB, atajos) */
+.eg-panel {
+  background: var(--eg-surface);
+  border: 2px solid var(--eg-border);
+  border-radius: var(--eg-radius-panel);
+  padding: 26px;
+  box-shadow: var(--eg-shadow-panel);
+}
+
+/* Botones */
+.eg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font: 500 0.9375rem/1 var(--eg-font-body);
+  padding: 0.75em 1.25em;
+  border-radius: var(--eg-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 120ms, border-color 120ms, color 120ms;
+}
+.eg-btn--primary { background: var(--eg-accent); color: var(--eg-on-accent); }
+.eg-btn--primary:hover { background: var(--eg-accent-hover); color: var(--eg-on-accent); }
+.eg-btn--secondary {
+  background: var(--eg-surface-raised);
+  color: var(--eg-text);
+  border-color: color-mix(in srgb, var(--eg-gold) 35%, transparent);
+}
+.eg-btn--secondary:hover { border-color: var(--eg-gold); color: var(--eg-text); }
+.eg-btn--danger { background: var(--eg-burnt-orange); color: var(--eg-walnut); }
+
+/* Tecla de teca (kbd) */
+:where(.eg) kbd, .eg-kbd {
+  display: inline-block;
+  font: 0.8125rem/1.5 var(--eg-font-mono);
+  color: var(--eg-gold-light);
+  background: var(--eg-teak);
+  border: 1px solid var(--eg-gold-muted);
+  border-radius: var(--eg-radius-key);
+  padding: 0 0.5em;
+  box-shadow: inset 0 -2px 0 #140F0C;
+}
+
+/* Campo de texto */
+.eg-input {
+  font: 1rem var(--eg-font-body);
+  color: var(--eg-text);
+  background: var(--eg-bg);
+  border: 1px solid var(--eg-surface-raised);
+  border-radius: var(--eg-radius-md);
+  padding: 0.65em 0.9em;
+  caret-color: var(--eg-gold);
+}
+.eg-input:focus { outline: none; border-color: var(--eg-gold); }
+
+/* Grano sutil, como el wallpaper (poner sobre fondos grandes) */
+.eg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .8 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
